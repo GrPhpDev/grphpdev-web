@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "GrPhpDev\\": "src/"
+        }
+    },
+    "require": {
+        "filp/whoops": "~1.0",
+        "silex/silex": "~1.2",
+        "dflydev/doctrine-orm-service-provider": "~1.0",
+        "symfony/yaml": "~2.5"
+    }
+}

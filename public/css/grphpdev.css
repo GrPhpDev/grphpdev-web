@@ -3,7 +3,7 @@ body {font-family: sans-serif; /*padding-top: 60px*/}
 
 section.splash-screen {
     background: #222 url(/images/skyline.png) no-repeat center 0 fixed;
-    height: 400px;
+    height: 380px;
     padding-top: 32px;
     text-align: center;
 }

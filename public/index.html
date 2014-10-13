@@ -11,33 +11,60 @@
 </head>
 <body style="">
     <script type="text/x-handlebars" data-template-name="_nav">
-        <nav class="navbar navbar-default" role="navigation"  data-spy="affix" data-offset-top="0">
-              <div class="container">
-                    <div class="navbar-header">
-                          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                          </button>
-                          {{#link-to 'index' class="navbar-brand" title="Grand Rapids PHP Developers"}}
-                          <img src="/images/grphpdev-small.png" alt="GrPhpDev" title="Grand Rapids PHP Developers">
-                          {{/link-to}}
-                    </div>
-                    <div class="navbar-collapse collapse">
-                          <ul class="nav navbar-nav">
-                              <li>{{#link-to 'events'}}Events{{/link-to}}</li>
-                              <li>{{#link-to 'sponsors'}}Sponsors{{/link-to}}</li>
-                          </ul>
-                          <ul class="nav navbar-nav navbar-right">
-                                <li><a href="https://twitter.com/grphpdev"><i class="fa fa-twitter"></i></a></li>
-                                <li><button class="btn btn-success navbar-btn">Join</button></li>
-                          </ul>
-                    </div>
-              </div>
-        </nav>
+          <div class="container">
+                <div class="navbar-header">
+                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      {{#link-to 'index' class="navbar-brand" title="Grand Rapids PHP Developers"}}
+                      <img src="/images/grphpdev-small.png" alt="GrPhpDev" title="Grand Rapids PHP Developers">
+                      {{/link-to}}
+                </div>
+                <div class="navbar-collapse collapse">
+                      <ul class="nav navbar-nav">
+                          <li>{{#link-to 'events'}}Events{{/link-to}}</li>
+                          <li>{{#link-to 'sponsors'}}Sponsors{{/link-to}}</li>
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                            <li><a href="https://twitter.com/grphpdev"><i class="fa fa-twitter"></i></a></li>
+                            <li><button class="btn btn-success navbar-btn">Join</button></li>
+                      </ul>
+                </div>
+          </div>
     </script>
-    <script type="text/x-handlebars" data-template-name="_footer">
+    <script type="text/x-handlebars" data-template-name="splash-layout">
+        <header>
+            <section class="splash-screen">
+                <img alt="GrPhpDev" title="Grand Rapids PHP Developers" src="/images/grphpdev-large.png">
+                <h1>Grand Rapids PHP Developers<br>User Group</h1>
+            </section>
+
+            <nav class="navbar navbar-default" role="navigation"  data-spy="affix" data-offset-top="380">
+                {{partial "nav"}}
+            </nav>
+        </header>
+
+        <div class="container">
+            {{yield}}
+        </div>
+    </script>
+    <script type="text/x-handlebars" data-template-name="standard-layout">
+        <header>
+            <nav class="navbar navbar-default" role="navigation"  data-spy="affix" data-offset-top="0">
+                {{partial "nav"}}
+            </nav>
+        </header>
+
+        <div class="container">
+            {{yield}}
+        </div>
+    </script>
+    <script type="text/x-handlebars">
+        {{outlet}}
+
         <footer class="footer">
             <div class="container">
                 <div class="row">
@@ -66,36 +93,8 @@
             </div>
         </footer>
     </script>
-    <script type="text/x-handlebars" data-template-name="main">
-        <header>
-            {{partial "nav"}}
-        </header>
-
-        <div class="container">
-            {{outlet}}
-        </div>
-    </script>
-    <script type="text/x-handlebars">
-        <header>
-            {{#if splashScreen}}
-            <section class="splash-screen">
-                <img alt="GrPhpDev" title="Grand Rapids PHP Developers" src="/images/grphpdev-large.png">
-                <h1>Grand Rapids PHP Developers<br>User Group</h1>
-            </section>
-            {{/if}}
-
-            {{partial "nav"}}
-        </header>
-
-        <div class="container">
-            {{outlet}}
-        </div>
-
-        {{partial "footer"}}
-    </script>
 
     <script type="text/x-handlebars" id="index">
-        <h1>{{splashScreen}}</h1>
         <div class="row">
             <div class="col-sm-12">
                 <h2>Grand Rapids PHP Developers</h2>

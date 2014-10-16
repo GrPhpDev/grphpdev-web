@@ -1,0 +1,26 @@
+GrPhpDev\Domain\Entity\Talk:
+  type: entity
+  table: talks
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+    description:
+      type: text
+      nullable: true
+  manyToOne:
+    speaker:
+      targetEntity: GrPhpDev\Domain\Entity\Member
+      inversedBy: talks
+      joinColumn:
+        name: event_id
+        referencedColumnName: id
+    event:
+      targetEntity: GrPhpDev\Domain\Entity\Event
+      inversedBy: talks
+      joinColumn:
+        name: event_id
+        referencedColumnName: id

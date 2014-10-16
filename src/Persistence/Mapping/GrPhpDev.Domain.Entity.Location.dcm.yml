@@ -1,0 +1,33 @@
+GrPhpDev\Domain\Entity\Location:
+  type: entity
+  table: locations
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+    address1:
+      nullable: true
+    address2:
+      nullable: true
+    city:
+      nullable: true
+    stateProvince:
+      column: state_province_code
+      length: 3
+      nullable: true
+    postalCode:
+      column: postal_code
+      nullable: true
+    latitude:
+      type: decimal
+      precision: 8
+      scale: 5
+      nullable: true
+    longitude:
+      type: decimal
+      precision: 8
+      scale: 5
+      nullable: true

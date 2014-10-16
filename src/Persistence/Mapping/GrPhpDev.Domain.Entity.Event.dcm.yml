@@ -1,0 +1,27 @@
+GrPhpDev\Domain\Entity\Event:
+  type: entity
+  table: events
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+    description:
+      type: text
+      nullable: true
+    eventDate:
+      column: event_date
+      type: datetimetz
+      nullable: true
+  oneToMany:
+    talks:
+      targetEntity: GrPhpDev\Domain\Entity\Talk
+      mappedBy: event
+  manyToOne:
+    location:
+      targetEntity: GrPhpDev\Domain\Entity\Location
+      joinColumn:
+        name: location_id
+        referencedColumnName: id

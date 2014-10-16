@@ -1,0 +1,17 @@
+GrPhpDev\Domain\Entity\Sponsor:
+  type: entity
+  table: sponsors
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+    description:
+      type: text
+      nullable: true
+    image:
+      nullable: true
+    url:
+      nullable: true

@@ -16,6 +16,8 @@ App.Location = DS.Model.extend({
 
 App.Sponsor = DS.Model.extend({
     name: DS.attr(),
+    description: DS.attr(),
+    url: DS.attr(),
     image: DS.attr(),
     imageUrl: function () {
         return '/images/sponsors/' + this.get('image')
@@ -37,7 +39,8 @@ App.Talk = DS.Model.extend({
 App.Event = DS.Model.extend({
     title: DS.attr('string'),
     description: DS.attr('string'),
-    talks: DS.hasMany('talks')
+    talks: DS.hasMany('talks'),
+    location: DS.belongsTo('location')
 });
 
 App.Router.map(function() {
@@ -58,7 +61,13 @@ App.IndexRoute = Ember.Route.extend({
 
 App.EventsRoute = Ember.Route.extend({
     model: function() {
-        return this.store.find('event');
+        var store = this.store;
+        return store.find('event').then(function(event) {
+            console.log(event);
+            return store.find('location', event.get('location'))
+        });
+
+        //return this.store.find('event');
     }
 });
 
@@ -73,6 +82,25 @@ App.SponsorsRoute = Ember.Route.extend({
         return this.store.find('sponsor');
     }
 });
+//
+//App.EventsController = Ember.ObjectController.extend({
+//    getLocations: function() {
+//        return this.get('model').get('location');
+//    }.property('model.location')
+//});
+
+App.StandardView = Ember.View.extend({
+    layoutName: 'standard-layout'
+});
+
+App.IndexView = Ember.View.extend({
+    layoutName: 'splash-layout'
+});
+
+App.SponsorsView = App.StandardView.extend();
+App.EventsView = App.StandardView.extend();
+App.EventViewView = App.StandardView.extend();
+
 
 Ember.Handlebars.helper('format-date', function(date) {
   return moment(date).format('LLL');

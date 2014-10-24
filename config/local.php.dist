@@ -1,0 +1,7 @@
+<?php
+
+return [
+    'db.options' => [
+        'driver' => 'pdo_pgsql',
+    ],
+];
